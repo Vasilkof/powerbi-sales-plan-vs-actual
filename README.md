@@ -18,6 +18,7 @@ Training dataset (Excel) with four tables:
 | Numbers stored as text | Changed data types |
 | Missing targets marked with "-" | Replaced with null |
 | Targets in wide format (one column per month) | Unpivot Other Columns |
+| Targets stored in thousands EUR (stated in the sheet header)| Multiplied by 1,000 to convert to EUR|
 | No revenue column | Calculated: Qty × Unit Price × (1 − Discount) |
 | Duplicate orders | Removed duplicates after cleaning |
 
@@ -46,9 +47,7 @@ The Calendar table (built with DAX `CALENDAR()`) lets one month slicer filter bo
 - By region, **North** performs best (**19.2%**), East is the weakest.
 - Total plan achievement is only **13.7%**.
 
-**Data caveat:** results this low are unusual and may indicate a data issue
-(e.g. incomplete sales data or targets in different units). Before drawing business
-conclusions, data completeness should be checked with the data owner.
+**Data caveat:** Target units (thousands EUR) are confirmed by the source, so the low plan achievement is most likely caused by incomplete sales data (only 300 order lines for 6 stores per month). Recommendation: check with the data owner whether the sales export is complete.
 
 ## Dashboard
 ![Plan vs. Actual dashboard](plan_vs_actual_dashboard.png)
